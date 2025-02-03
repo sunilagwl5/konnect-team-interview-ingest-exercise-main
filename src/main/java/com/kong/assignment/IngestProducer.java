@@ -27,6 +27,11 @@ public class IngestProducer {
         return properties;
     }
 
+    /**
+     *  For POC, I have kept only one kafka partition for all the events, to get the ordered(by ts due to debezium) events by c/id(user_id).
+     *  In case of multiple partitions, we can use c/id(user_id) as partition key for same behaviour.
+     *  choosing c/id(user_id) over document_id, to get consistent view across all kong entities of a user.
+     */
     public void readJsonFile() {
 
 
